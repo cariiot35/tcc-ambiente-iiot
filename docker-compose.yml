@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # ========== BROKER REAL (recebe ESP32) ==========
+  broker-real:
+    image: eclipse-mosquitto:2
+    container_name: broker-real
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./broker-real/config:/mosquitto/config
+    networks:
+      rede-iot:
+        ipv4_address: 172.20.0.10
+    restart: unless-stopped
+
+  # ========== GÊMEO DIGITAL (ALVO DOS ATAQUES) ==========
+  gemeo-digital:
+    build:
+      context: ./gemeo
+      dockerfile: Dockerfile
+    container_name: gemeo-digital
+    environment:
+      - BROKER_REAL=172.20.0.10
+      - BROKER_REAL_PORT=1883
+      - BROKER_VIRTUAL=172.20.0.30
+      - BROKER_VIRTUAL_PORT=1883
+    depends_on:
+      - broker-real
+      - broker-virtual
+    networks:
+      rede-iot:
+        ipv4_address: 172.20.0.20
+    restart: unless-stopped
+
+  # ========== BROKER VIRTUAL (protegido, para Node-RED) ==========
+  broker-virtual:
+    image: eclipse-mosquitto:2
+    container_name: broker-virtual
+    ports:
+      - "1884:1883"
+    volumes:
+      - ./broker-virtual/config:/mosquitto/config
+    networks:
+      rede-iot:
+        ipv4_address: 172.20.0.30
+    restart: unless-stopped
+
+networks:
+  rede-iot:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+          gateway: 172.20.0.1
