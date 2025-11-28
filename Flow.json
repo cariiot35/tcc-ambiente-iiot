@@ -1,0 +1,182 @@
+[
+    {
+        "id": "50dcf7f1c244130e",
+        "type": "tab",
+        "label": "Fluxo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "59db8fd41bd80657",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost:1883",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "99f9a4dc79dc7bfb",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1884",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e8796a1869e179bc",
+        "type": "firebase-config",
+        "name": "My Database",
+        "authType": "privateKey",
+        "claims": {},
+        "createUser": false,
+        "status": {
+            "firestore": true,
+            "storage": false
+        },
+        "useClaims": false
+    },
+    {
+        "id": "21e6137898918683",
+        "type": "mqtt in",
+        "z": "50dcf7f1c244130e",
+        "name": "",
+        "topic": "frigorifico/fisico/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "59db8fd41bd80657",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 300,
+        "y": 380,
+        "wires": [
+            [
+                "fbdc38982e9da46b",
+                "449a2ed996f2b1e0"
+            ]
+        ]
+    },
+    {
+        "id": "fbdc38982e9da46b",
+        "type": "firebase-out",
+        "z": "50dcf7f1c244130e",
+        "name": "Firebase Frigorífico",
+        "database": "e8796a1869e179bc",
+        "path": "topic",
+        "pathType": "msg",
+        "priority": "1",
+        "queryType": "set",
+        "x": 630,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "449a2ed996f2b1e0",
+        "type": "debug",
+        "z": "50dcf7f1c244130e",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "34bb63c4aa30e515",
+        "type": "mqtt in",
+        "z": "50dcf7f1c244130e",
+        "name": "",
+        "topic": "frigorifico/virtual/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "99f9a4dc79dc7bfb",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 300,
+        "y": 440,
+        "wires": [
+            [
+                "cf87029697d18cd1",
+                "449a2ed996f2b1e0"
+            ]
+        ]
+    },
+    {
+        "id": "cf87029697d18cd1",
+        "type": "firebase-out",
+        "z": "50dcf7f1c244130e",
+        "name": "Firebase Frigorífico",
+        "database": "e8796a1869e179bc",
+        "path": "topic",
+        "pathType": "msg",
+        "priority": "1",
+        "queryType": "set",
+        "x": 630,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "3e69e43867f3850e",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@gogovega/firebase-config-node": "0.3.2",
+            "@gogovega/node-red-contrib-firebase-realtime-database": "0.8.2"
+        }
+    }
+]
