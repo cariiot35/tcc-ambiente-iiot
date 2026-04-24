@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/cariiot35/tcc-dashboard-iiot/blob/8f55a6b040ba20e2c24a13e980de1e76af37c7d8/CARIIoT/frontend/img/logo.png" alt="CARIIOT" width="750">
+  <img src="https://github.com/cariiot35/tcc-dashboard-iiot/blob/8f55a6b040ba20e2c24a13e980de1e76af37c7d8/CARIIoT/frontend/img/logo.png" alt="CARIIOT" width="600">
 </div>
 
 ## Sobre CARIIoT 
