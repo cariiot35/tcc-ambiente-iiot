@@ -9,6 +9,11 @@ O CARIIoT (Controle e Análise de Redes de Internet Industrial das Coisas) é um
 ## Descrição
 Este repositório contém todos os artefatos necessários para reproduzir o ambiente virtual criado para **simulação de ataques em redes IIoT (Industrial Internet of Things)**. Inclui contêineres Docker, gêmeo digital, fluxos Node-RED, comandos utilizados nas simulações e documentação completa de execução.
 
+## Visualização de Dados (Dashboard)
+Este repositório é responsável pela geração e processamento dos dados. Para visualizar o monitoramento em tempo real, os alertas de segurança e a interface web do projeto, acesse o repositório do Dashboard: [**tcc-dashboard-iiot**](https://github.com/SEU-USUARIO/tcc-dashboard-iiot)
+
+> **Aplicação Online:** [https://cariiot.web.app](https://cariiot.web.app)
+
 ## Tecnologias e Ferramentas
  - Linguagem: Python (Scripts de simulação e Gêmeo Digital).
  - Containerização: Docker & Docker Compose (Isolamento do ambiente).
@@ -45,7 +50,7 @@ Este ambiente foi desenvolvido estritamente para fins educacionais e de pesquisa
 Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ## Autores
-**Desenvolvido por:** 
+**Projeto desenvolvido por:** 
  - Laís de Sá Santos;
  - Lázaro Levy Fragoso de Souza; 
  - Lucas Silva Matos;
